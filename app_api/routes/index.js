@@ -1,15 +1,17 @@
 const express = require('express');
 const router = express.Router();
 
-const tripsCtrl = require('../controllers/trips');
+const tripsController = require('../controllers/trips');
 
-// trips routes
 router
   .route('/trips')
-  .get(tripsCtrl.tripsList);
+  .get(tripsController.tripsList)
+  .post(tripsController.tripsAddTrip);
 
 router
   .route('/trips/:tripCode')
-  .get(tripsCtrl.tripsFindByCode);
+  .get(tripsController.tripsFindByCode)
+  .put(tripsController.tripsUpdateTrip)
+  .delete(tripsController.tripsDeleteTrip);
 
 module.exports = router;
