@@ -28,5 +28,35 @@
     "perPerson": "510.00",
     "image": "reef3.jpg",
     "description": "Claire's Reef: Donec sed felis risus. Nulla facilisi. Donec a orci tellus, et auctor odio. Fusce ac orci nibh, quis semper arcu."
+  },
+  {
+    "code": "CORL",
+    "name": "Coral Cove",
+    "length": "2 nights",
+    "start": "2027-02-14",
+    "resort": "Coral Cove Lodge",
+    "perPerson": "275.00",
+    "image": "reef1.jpg",
+    "description": "Coral Cove: A quick weekend getaway with two guided snorkel trips over shallow coral gardens. Good for first time divers."
+  },
+  {
+    "code": "TURT",
+    "name": "Turtle Bay",
+    "length": "6 nights",
+    "start": "2027-04-10",
+    "resort": "Turtle Bay Dive Resort",
+    "perPerson": "640.00",
+    "image": "reef2.jpg",
+    "description": "Turtle Bay: Six nights at a beachfront dive resort with daily boat dives and a night dive to see the sea turtles feeding."
+  },
+  {
+    "code": "BLUH",
+    "name": "Blue Hole Expedition",
+    "length": "7 nights",
+    "start": "2027-06-05",
+    "resort": "Lighthouse Reef Lodge",
+    "perPerson": "895.00",
+    "image": "reef3.jpg",
+    "description": "Blue Hole Expedition: A full week for experienced divers, including a deep dive into the Blue Hole and three days on the outer reef walls."
   }
 ]
