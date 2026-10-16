@@ -3,6 +3,7 @@ import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { Trip } from '../models/trip';
 import { TripData } from '../services/trip-data';
+import { Authentication } from '../services/authentication';
 
 @Component({
   selector: 'app-trip-card',
@@ -13,11 +14,16 @@ import { TripData } from '../services/trip-data';
 export class TripCard {
   private router = inject(Router);
   private tripData = inject(TripData);
+  private auth = inject(Authentication);
 
   trip = input.required<Trip>();
   deleted = output<void>();
 
   imageBase = 'http://localhost:3000/images/';
+
+  isLoggedIn(): boolean {
+    return this.auth.isLoggedIn();
+  }
 
   editTrip(): void {
     this.router.navigate(['edit-trip', this.trip().code]);

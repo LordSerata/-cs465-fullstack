@@ -9,8 +9,10 @@
     <p class="mb-2"><strong>Per person:</strong> {{ trip().perPerson }}</p>
     <p class="card-text" [innerHTML]="trip().description"></p>
   </div>
+  @if (isLoggedIn()) {
   <div class="card-footer d-flex gap-2">
     <button type="button" class="btn btn-primary" (click)="editTrip()">Edit</button>
     <button type="button" class="btn btn-danger" (click)="deleteTrip()">Delete</button>
   </div>
+  }
 </div>

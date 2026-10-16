@@ -4,6 +4,8 @@ import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TripCard } from './trip-card';
 import { Trip } from '../models/trip';
+import { BROWSER_STORAGE } from '../storage';
+import { MockStorage, validToken } from '../testing/mock-auth';
 
 const mockTrip: Trip = {
   _id: '1', code: 'TEST', name: 'Mock Reef', length: '4 nights / 5 days',
@@ -14,26 +16,37 @@ const mockTrip: Trip = {
 describe('TripCard (mock data)', () => {
   let fixture: ComponentFixture<TripCard>;
   let http: HttpTestingController;
+  let storage: MockStorage;
 
   beforeEach(async () => {
+    storage = new MockStorage();
     await TestBed.configureTestingModule({
       imports: [TripCard],
-      providers: [provideRouter([]), provideHttpClient(), provideHttpClientTesting()]
+      providers: [provideRouter([]), provideHttpClient(), provideHttpClientTesting(),
+        { provide: BROWSER_STORAGE, useValue: storage }]
     }).compileComponents();
     fixture = TestBed.createComponent(TripCard);
     fixture.componentRef.setInput('trip', mockTrip);
     http = TestBed.inject(HttpTestingController);
-    fixture.detectChanges();
   });
 
   it('shows the trip name, code and resort', () => {
+    fixture.detectChanges();
     const text = fixture.nativeElement.textContent;
     expect(text).toContain('Mock Reef');
     expect(text).toContain('TEST');
     expect(text).toContain('Mock Resort');
   });
 
-  it('sends a DELETE and tells the parent when Delete is clicked', () => {
+  it('hides Edit and Delete when logged out', () => {
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('.btn-primary')).toBeNull();
+    expect(fixture.nativeElement.querySelector('.btn-danger')).toBeNull();
+  });
+
+  it('shows Edit and Delete when logged in, and Delete sends a DELETE', () => {
+    storage.setItem('travlr-token', validToken());
+    fixture.detectChanges();
     let emitted = false;
     fixture.componentInstance.deleted.subscribe(() => (emitted = true));
     fixture.nativeElement.querySelector('.btn-danger').click();
