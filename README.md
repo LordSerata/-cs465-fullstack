@@ -116,5 +116,3 @@ The skills I'm taking away:
 This repo is something I can show employers to prove I can build and secure a working full stack app, not just talk about one.
 
 ---
-
-**AI usage acknowledgment:** I used Claude (Anthropic) to help me build, test and understand this project and to help write this README. I followed the SNHU Shapiro Library guidelines for acknowledging AI use.
